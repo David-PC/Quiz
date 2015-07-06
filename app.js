@@ -11,6 +11,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 
+var partials = require('express-partials');
 
 var routes = require('./routes/index');
 
@@ -27,6 +28,7 @@ app.set('view engine', 'ejs');
 
 
 
+app.use(partials());
 app.use(favicon(__dirname + '/public/favicon.ico'));
 
 app.use(logger('dev'));
