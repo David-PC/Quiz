@@ -1,5 +1,6 @@
 ﻿var models = require('../models/models.js');
 
+
 // Autoload :id
 exports.load = function(req, res, next, quizId) {
   models.Quiz.find(quizId).then(
@@ -15,12 +16,11 @@ exports.load = function(req, res, next, quizId) {
 // GET /quizes
 exports.index = function(req, res) {
   if (req.query.busqueda) {
-    var txtBusqueda = '%' + req.query.busqueda.replace(' ', '%') + '%';
+    var txtBusqueda= '%' + req.query.busqueda.replace(' ', '%') + '%';
     models.Quiz.findAll({ where: ["pregunta like ?", txtBusqueda] }).then(function(results) {
-      res.render(
-       'quizes/index', 
-       { quizes: results,
-         errors: []
+      res.render('quizes/index', {
+        quizes: results,
+        errors: []
       });
     });
   } else {
@@ -30,10 +30,8 @@ exports.index = function(req, res) {
         errors: []
       });
     });
-
   }
 };
-
 // GET /quizes/:id
 exports.show = function(req, res) {
   res.render('quizes/show', { quiz: req.quiz, errors: []});
