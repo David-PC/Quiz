@@ -13,14 +13,6 @@ exports.load = function(req, res, next, quizId) {
   ).catch(function(error){next(error)});
 };
 
-//Autor
-exports.author = function(req, res) {
-  res.render('author', {
-    autor: {nombre: 'David', imagen: ''}
-    errors: []
-  });
-};
-
 // GET /quizes
 exports.index = function(req, res) {
   if (req.query.busqueda) {
