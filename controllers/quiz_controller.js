@@ -15,7 +15,8 @@ exports.load = function(req, res, next, quizId) {
 //Autor
 exports.author = function(req, res) {
   res.render('author', {
-    'autor': {nombre: 'David', imagen: ''}
+    autor: {nombre: 'David', imagen: ''}
+    errors: []
   });
 };
 
