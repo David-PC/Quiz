@@ -42,6 +42,21 @@ app.use(function(req, res, next) {
   next();
 });
 
+
+app.use(function(req, res, next) {
+  var ahora = (new Date).getTime();
+
+  if (req.session.user && (ahora - req.session.user.loginDate) > 120000) {
+    delete req.session.user;
+    res.redirect('/login');
+  }
+
+  next();
+});
+
+
+
+
 app.use('/', routes);
 
 // catch 404 and forward to error handler
